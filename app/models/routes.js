@@ -36,7 +36,7 @@ router.post( '/insert', upload.single( 'image' ), function( req, res ){
         created_at: new Date()
     });
 
-    user.funny( function( err, name ){
+    user.smile( function( err, name ){
         if( err ) throw err;
 
         console.log( 'Your new name is ' + name );

@@ -11,8 +11,12 @@ var user_schema = new Schema({
     updated_at : { type : Date, default : Date.now }
 });
 
-user_schema.methods.funny = function(){
-    return this.name + ' :-)';
+user_schema.methods.smile = function(){
+    this.name += ' :-)';
+};
+
+user_schema.methods.findSimilarTypes = function(cb) {
+    return this.model('Animal').find({ type: this.type }, cb);
 };
 
 var User = mongoose.model( 'User', user_schema );
