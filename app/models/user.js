@@ -15,8 +15,8 @@ var user_schema = new Schema({
     updated_at : { type : Date, default : Date.now }
 });
 
-user_schema.methods.dudify = function(){
-    return this.name + '-dude';
+user_schema.methods.funny = function(){
+    return this.name + ' :-)';
 };
 
 var User = mongoose.model( 'User', user_schema );
