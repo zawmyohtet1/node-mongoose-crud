@@ -1,6 +1,6 @@
 <% include /includes/header.html %>
-<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="/<%= user._id %>">
-    <input type="hidden" value="put" name="_method" />
+<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="/<%= user._id %>?_method=PUT">
+    <!--<input type="hidden" value="put" name="_method" />-->
     <div class="form-group">
         <label class="control-label col-md-3" for="name">Display Name</label>
         <div class="col-md-4">

@@ -3,18 +3,6 @@ var router = express.Router();
 var User = require( __dirname + '/user' );
 var multer  = require('multer');
 var upload = multer({ dest: 'public/uploads/' });
-var methodOverride = require( 'method-override' );
-
-/***************************************************/
-/*** OVERWRITE METHOD FOR PUT AND DELETE METHODS ***/
-/***************************************************/
-//router.use( methodOverride( function( req, res ){
-//    if( req.body && typeof req.body === 'object' && '_method' in req.body ){
-//        var method = req.body._method;
-//        delete req.body._method;
-//        return method;
-//    }
-//}));
 
 
 /***************************************************/
@@ -78,7 +66,7 @@ router.get( '/:id/edit', function( req, res ){
 /***************************************************/
 /*********** UPDATE : USER INFORMATION *************/
 /***************************************************/
-router.post( '/:id', upload.single( 'image' ), function( req, res ){
+router.put( '/:id', upload.single( 'image' ), function( req, res ){
     if ( req.params.id.match(/^[0-9a-fA-F]{24}$/) ) {
         User.findById( req.params.id, function( err, user ){
             if( err ) throw err;
