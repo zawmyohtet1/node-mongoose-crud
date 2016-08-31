@@ -3,9 +3,9 @@
 A simple CRUD by using node.js, express and mongodb
 
 ## How to use
-$ git clone https://github.com/zawmyohtet1/node-mongoose-crud.git
+$ git clone https://github.com/zawmyohtet1/nodejs-express-crud.git
 
-$ cd node-mongoose-crud
+$ cd nodejs-express-crud
 
 $ npm install
 
