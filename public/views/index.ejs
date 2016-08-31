@@ -1,0 +1,32 @@
+<% include /includes/header.html %>
+<p></div><a href="/create"><span class="btn btn-primary btn-sm">+ Add new user</span></a></p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Display Name</th>
+            <th>User Name</th>
+            <th>Admin?</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach( function( user, index ){ %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.user_name %></td>
+                <td>
+                    <% if( user.admin ){ %>
+                        Yes
+                    <% }else{ %>
+                        No
+                    <% } %>
+                </td>
+                <td>
+                    <a href="/<%= user._id %>/edit"><span class="label label-warning">Edit</span></a>
+                    <a href="/<%= user._id %>"><span class="label label-danger">Delete</span></a>
+                </td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+<% include /includes/footer.html %>

@@ -1,0 +1,83 @@
+<% include /includes/header.html %>
+<form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="/<%= user._id %>">
+    <input type="hidden" value="put" name="_method" />
+    <div class="form-group">
+        <label class="control-label col-md-3" for="name">Display Name</label>
+        <div class="col-md-4">
+            <input type="text" name="name" id="name" class="form-control" required value="<%= user.name %>">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3" for="user_name">User Name</label>
+        <div class="col-md-4">
+            <input type="text" name="user_name" id="user_name" class="form-control" required value="<%= user.user_name %>">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3">Admin</label>
+        <div class="col-md-4">
+            <div class="radio">
+                <%
+                    var is_checked = '',
+                        is_unchecked = ''
+                    ;
+                    if( user.admin ){
+                        is_checked = 'checked';
+                    }else{
+                        is_unchecked = 'checked';
+                    }
+                %>
+                <label>
+                    <input type="radio" name="admin" value="Y" <%= is_checked %>>
+                    Yes
+                </label>
+                <label>
+                    <input type="radio" name="admin" value="N" <%= is_unchecked %>>
+                    No
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3">Image</label>
+        <div class="col-md-4">
+            <input type="hidden" name="current_image" value="<%= user.image %>" />
+            <input type="file" name="image" onchange="previewImage( this )" />
+            <img src="<%= user.image %>" id="img_container" style="width: 200px;height: 200px" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <a href="/" class="btn btn-default">Back</a>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+    </div>
+</form>
+<% include /includes/footer.html %>
+<script>
+    function readImage(file) {
+        var reader = new FileReader();
+        var image  = new Image();
+        reader.readAsDataURL(file);
+        reader.onload = function(_file) {
+            image.src    = _file.target.result;
+            image.onload = function() {
+                document.getElementById( 'img_container' ).src = this.src;
+            };
+            image.onerror= function() {
+                alert('Invalid file type: '+ file.type);
+            };
+        };
+
+    }
+
+    function previewImage( obj ){
+        var F = obj.files;
+        if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
+    }
+
+</script>
