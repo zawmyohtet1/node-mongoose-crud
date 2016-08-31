@@ -7,10 +7,6 @@ var user_schema = new Schema({
     password  : { type : String, required : true },
     admin     : Boolean,
     image  : String,
-    meta : {
-        age     : Number,
-        website : String
-    },
     created_at : { type : Date, default : Date.now },
     updated_at : { type : Date, default : Date.now }
 });
