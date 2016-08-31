@@ -13,3 +13,6 @@ $ node index
 
 
 And point your browser to http://localhost:8080.
+
+Still need to use PUT and DELETE methods for updating and deleteing users.
+Currently, it used POST to update user and GET method to delete user.
